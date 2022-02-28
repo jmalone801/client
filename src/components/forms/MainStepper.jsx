@@ -1,7 +1,6 @@
 import axios from 'axios';
 import { useHistory } from "react-router-dom";
-import { useForm } from "react-hooks-helper";
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { ThemeProvider } from '@mui/material/styles';
 import ColorTheme from '../navs/ColorTheme';
 import NavContainer from '../navs/SecondaryNav';
@@ -16,30 +15,17 @@ import Typography from '@mui/material/Typography';
 import AddCar from './AddForms/AddCar'
 import MainHistory from './HistoryForms/MainHistory'
 import MainUpcoming from './UpcomingForms/MainUpcoming'
+import { multiStepContext } from './FormContext'
 
 
 
-    // Test
-    const defaultData = {
-        make: "",
-        model: "",
-        year: "",
-        exteriorColor: "",
-        interiorColor: "",
-        vinNumber: "",
-        ezPassNumber: "",
-        transmissionType: "",
-        finalCost: "",
-        additionalNotesAddCar: ""
-    };
-    // End Test
 
 const MainStepper = () => {
+    const { submitData } = useContext(multiStepContext)
+
     const [activeStep, setActiveStep] = useState(0);
-    const [formData, setForm] = useForm(defaultData);
     const history = useHistory();
 
-    const props = { formData, setForm};
 
 
 
@@ -59,7 +45,15 @@ const MainStepper = () => {
     // Begin stepper functions ===========================================================================
     // Handles next button
     const handleNext = () => {
-        setActiveStep(activeStep + 1);
+        if(activeStep === stepsLabel.length - 1){
+            console.log("Form Successfully Submitted")
+            submitData()
+            // Run submit function here
+        }
+        else {
+            console.log("NEXT")
+            setActiveStep(activeStep + 1);
+        }
     };
 
     // Handles back button
@@ -72,9 +66,10 @@ const MainStepper = () => {
 
     // Stepper context
     function getStepContent(step) {
+        console.log(step)
         switch (step) {
             case 0:
-                return <AddCar {...props} />;
+                return <AddCar />; 
             case 1:
                 return <MainHistory />;
             case 2:
@@ -91,42 +86,47 @@ const MainStepper = () => {
     return (
         <ThemeProvider theme={ColorTheme}>
             <NavContainer />
-            <Container maxWidth="sm" sx={{ mb: 5 }} style={{ marginTop: 100 }}>
-                <Stepper activeStep={activeStep} sx={{ width: "100%", mb: 4 }}>
-                    {stepsLabel.map((label) => (
-                        <Step key={label}>
-                            <StepLabel>{label}</StepLabel>
-                        </Step>
-                    ))}
-                </Stepper>
-                <React.Fragment>
-                    {activeStep === stepsLabel.length ? (
-                        <React.Fragment>
-                            <Typography variant="h5">
-                                Success! Vehicle has been added!
-                            </Typography>
-                        </React.Fragment>
-                    ) : (
-                        <React.Fragment>
-                            {getStepContent(activeStep)}
-                            <Box sx={{ display: 'flex', justifyContent: 'flex-end', mt: 2}}>
-                                {activeStep !== 0 && (
-                                    <Button 
-                                        onClick={handleBack} >
-                                    Back
-                                    </Button>
-                                )}
-                                <Button
-                                    variant="contained"
-                                    onClick={handleNext}
-                                >
-                                    {activeStep === stepsLabel.length - 1 ? 'Finish' : 'Next'}
-                                </Button>
-                            </Box>
-                        </React.Fragment>
-                    )}
-                </React.Fragment>
-            </Container>
+
+                <Container maxWidth="sm" sx={{ mb: 5 }} style={{ marginTop: 100 }}>
+                    {/* Begin Stepper Label ONLY */}
+                    <Stepper activeStep={activeStep} sx={{ width: "100%", mb: 4 }}>
+                        {stepsLabel.map((label) => (
+                            <Step key={label}>
+                                <StepLabel>{label}</StepLabel>
+                            </Step>
+                        ))}
+                    </Stepper>
+                    {/* End Stepper Label ONLY */}
+                    {/* Begin Stepper Content */}
+                    <React.Fragment>
+                            {activeStep === stepsLabel.length ? (
+                                <React.Fragment>
+                                    <Typography variant="h5">
+                                        Success! Vehicle has been added!
+                                    </Typography>
+                                </React.Fragment>
+                            ) : (
+                                <React.Fragment>
+                                    {getStepContent(activeStep)}
+                                    <Box sx={{ display: 'flex', justifyContent: 'flex-end', mt: 2}}>
+                                        {activeStep !== 0 && (
+                                            <Button
+                                                onClick={handleBack} >
+                                            Back
+                                            </Button>
+                                        )}
+                                        <Button
+                                            variant="contained"
+                                            onClick={handleNext}
+                                        >
+                                            {activeStep === stepsLabel.length - 1 ? 'Submit' : 'Next'}
+                                        </Button>
+                                    </Box>
+                                </React.Fragment>
+                            )}
+                    </React.Fragment>
+                    {/* End Stepper Content */}
+                </Container>
         </ThemeProvider>
     );
 };

@@ -21,7 +21,7 @@ const Dashboard = () => {
             })
             .catch(err => {
                 console.log("Error for logged in user", err)
-                history.push("/")
+                history.push("/dashboard")
             })
     }, [history])
 

@@ -5,6 +5,7 @@ import Register from './components/loginAndReg/Register';
 import Login from './components/loginAndReg/Login';
 import Dashboard from './components/dashboard/Dashboard';
 import MainStepper from './components/forms/MainStepper';
+import FormContext from './components/forms/FormContext';
 
 function App() {
   return (
@@ -23,10 +24,12 @@ function App() {
           <Route exact path="/dashboard">
             <Dashboard/>
           </Route>
-
+          
+          <FormContext>
           <Route exact path="/forms">
             <MainStepper/>
           </Route>
+          </FormContext>
 
         </Switch>
       </BrowserRouter>

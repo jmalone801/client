@@ -1,13 +1,20 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
+// import React, { useContext} from 'react';
 import TextField from '@mui/material/TextField';
 import Grid from '@mui/material/Grid';
 import Button from '@mui/material/Button';
 import Divider from '@mui/material/Divider';
 import { v4 as uuidv4 } from 'uuid';
 
+import FormContext from '../FormContext'
 
 
-const OwnerHistory = () => {
+
+const OwnerHistory = (props) => {
+
+    const {form, setTestForm } = useContext(FormContext)
+
+
     const [inputFields, setInputFields] = useState([{
         id: uuidv4(),
         previousOwnerName: '',
@@ -28,6 +35,7 @@ const OwnerHistory = () => {
     // Begin Add button
     // Handles indiviual input
     const handleChangeInput = (id, event) => {
+        console.log("call from FIRST function")
         const newInputFields = inputFields.map(i => {
             if (id === i.id) {
                 i[event.target.name] = event.target.value
@@ -36,6 +44,14 @@ const OwnerHistory = () => {
         })
         setInputFields(newInputFields);
     }
+
+    // SECOND FUNCTION TEST
+    const handleFormInput = () => {
+        console.log("call from SECOND function")
+        console.log(form)
+        setTestForm(form)
+    }
+
 
     // Handles add button
     const handleAddFields = () => {
@@ -68,7 +84,8 @@ const OwnerHistory = () => {
                                     label="Previous Owner Name"
                                     name="previousOwnerName"
                                     value={inputField.previousOwnerName}
-                                    onChange={event => handleChangeInput(inputField.id, event)}
+                                    onChange={event => {handleChangeInput(inputField.id, event)
+                                                        handleFormInput(event.target.value)}}
                                 />
                             </Grid>
                             <Grid item xs={12}>
@@ -77,7 +94,8 @@ const OwnerHistory = () => {
                                     label="Contact Infomation"
                                     name="previousOwnerContact"
                                     value={inputField.previousOwnerContact}
-                                    onChange={event => handleChangeInput(inputField.id, event)}
+                                    onChange={event => {handleChangeInput(inputField.id, event)
+                                                        handleFormInput(event.target.value)}}
                                 />
                             </Grid>
                             <Grid item xs={12}>
@@ -87,7 +105,8 @@ const OwnerHistory = () => {
                                     label="Years in Possession"
                                     name="previousOwnerYears"
                                     value={inputField.previousOwnerYears}
-                                    onChange={event => handleChangeInput(inputField.id, event)}
+                                    onChange={event => {handleChangeInput(inputField.id, event)
+                                                        handleFormInput(event.target.value)}}
                                 />
                             </Grid>
                             <Grid item xs={12}>
@@ -96,7 +115,8 @@ const OwnerHistory = () => {
                                     label="Mileage When Sold"
                                     name="mileageOwners"
                                     value={inputField.mileageOwners}
-                                    onChange={event => handleChangeInput(inputField.id, event)}
+                                    onChange={event => {handleChangeInput(inputField.id, event)
+                                                        handleFormInput(event.target.value)}}
                                 />
                             </Grid>
                             <Grid item xs={12}>
@@ -105,7 +125,8 @@ const OwnerHistory = () => {
                                     label="Stories or Notes"
                                     name="previousOwnerStory"
                                     value={inputField.previousOwnerStory}
-                                    onChange={event => handleChangeInput(inputField.id, event)}
+                                    onChange={event => {handleChangeInput(inputField.id, event)
+                                                        handleFormInput(event.target.value)}}
                                     multiline
                                     rows={4}
                                 />

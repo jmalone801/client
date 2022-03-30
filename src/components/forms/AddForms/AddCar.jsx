@@ -33,8 +33,8 @@ const AddCarForm = () => {
                                     fullWidth
                                     name="make"
                                     label="Make"
-                                    value={userData["make"]}
-                                    onChange={(event) => setUserData({...userData, "make" : event.target.value})}
+                                    value={userData.make}
+                                    onChange={(event) => setUserData({...userData, make : event.target.value})}
                                     />
                             </Grid>
                             <Grid item xs={12}>
@@ -43,8 +43,8 @@ const AddCarForm = () => {
                                     fullWidth
                                     name="model"
                                     label="Model"
-                                    value={userData["model"]}
-                                    onChange={(event) => setUserData({...userData, "model" : event.target.value})}
+                                    value={userData.model}
+                                    onChange={(event) => setUserData({...userData, model : event.target.value})}
                                 />
                             </Grid>
                             <Grid item xs={12}>
@@ -54,8 +54,8 @@ const AddCarForm = () => {
                                     name="year"
                                     label="Year"
                                     type="number"
-                                    value={userData["year"]}
-                                    onChange={(event) => setUserData({...userData, "year" : event.target.value})}
+                                    value={userData.year}
+                                    onChange={(event) => setUserData({...userData, year : event.target.value})}
                                 />
                             </Grid>
                             <Grid item xs={12}>
@@ -64,8 +64,8 @@ const AddCarForm = () => {
                                     fullWidth
                                     name="exteriorColor"
                                     label="Exterior Color"
-                                    value={userData["exteriorColor"]}
-                                    onChange={(event) => setUserData({...userData, "exteriorColor" : event.target.value})}
+                                    value={userData.exteriorColor}
+                                    onChange={(event) => setUserData({...userData, exteriorColor : event.target.value})}
                                 />
                             </Grid>
                             <Grid item xs={12}>
@@ -74,8 +74,8 @@ const AddCarForm = () => {
                                     fullWidth
                                     name="interiorColor"
                                     label="Interior Color"
-                                    value={userData["interiorColor"]}
-                                    onChange={(event) => setUserData({...userData, "interiorColor" : event.target.value})}
+                                    value={userData.interiorColor}
+                                    onChange={(event) => setUserData({...userData, interiorColor : event.target.value})}
                                 />
                             </Grid>
                             <Grid item xs={12}>
@@ -84,8 +84,8 @@ const AddCarForm = () => {
                                     fullWidth
                                     name="vinNumber"
                                     label="VIN Number"
-                                    value={userData["vinNumber"]}
-                                    onChange={(event) => setUserData({...userData, "vinNumber" : event.target.value})}
+                                    value={userData.vinNumber}
+                                    onChange={(event) => setUserData({...userData, vinNumber : event.target.value})}
                                 />
                             </Grid>
                             <Grid item xs={12}>
@@ -93,8 +93,8 @@ const AddCarForm = () => {
                                     fullWidth
                                     name="ezPassNumber"
                                     label="EZ Pass Number"
-                                    value={userData["ezPassNumber"]}
-                                    onChange={(event) => setUserData({...userData, "ezPassNumber" : event.target.value})}
+                                    value={userData.ezPassNumber}
+                                    onChange={(event) => setUserData({...userData, ezPassNumber : event.target.value})}
                                 />
                             </Grid>
                             <Grid item xs={12}>
@@ -103,8 +103,8 @@ const AddCarForm = () => {
                                     fullWidth
                                     name="transmissionType"
                                     label="Transmission Type"
-                                    value={userData["transmissionType"]}
-                                    onChange={(event) => setUserData({...userData, "transmissionType" : event.target.value})}
+                                    value={userData.transmissionType}
+                                    onChange={(event) => setUserData({...userData, transmissionType : event.target.value})}
                                 />
                             </Grid>
                             <Grid item xs={12}>
@@ -112,8 +112,8 @@ const AddCarForm = () => {
                                     fullWidth
                                     name="finalCost"
                                     label="Final Cost"
-                                    value={userData["finalCost"]}
-                                    onChange={(event) => setUserData({...userData, "finalCost" : event.target.value})}
+                                    value={userData.finalCost}
+                                    onChange={(event) => setUserData({...userData, finalCost : event.target.value})}
                                 />
                             </Grid>
                             <Grid item xs={12}>
@@ -124,8 +124,8 @@ const AddCarForm = () => {
                                     fullWidth
                                     name="additionalNotesAddCar"
                                     label="Detail Notes"
-                                    value={userData["additionalNotesAddCar"]}
-                                    onChange={(event) => setUserData({...userData, "additionalNotesAddCar" : event.target.value})}
+                                    value={userData.additionalNotesAddCar}
+                                    onChange={(event) => setUserData({...userData, additionalNotesAddCar : event.target.value})}
                                 />
                             </Grid>
                         </Grid>

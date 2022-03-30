@@ -51,7 +51,7 @@ const MainStepper = () => {
             // Run submit function here
         }
         else {
-            console.log("NEXT")
+            // console.log("NEXT")
             setActiveStep(activeStep + 1);
         }
     };

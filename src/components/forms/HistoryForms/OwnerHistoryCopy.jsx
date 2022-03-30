@@ -13,7 +13,11 @@ import React, { useContext } from 'react';
 const OwnerHistoryCopy = () => {
     const { userData, setUserData } = useContext(multiStepContext)
 
-
+    const onChangeHandler = (event, index) => {
+        const copyData = {...userData};
+        copyData.owners[index][event.target.name] = event.target.value;
+        setUserData(copyData);
+    }
 
 
     return (
@@ -30,8 +34,8 @@ const OwnerHistoryCopy = () => {
             }}>
                 {({ values }) => (
                     <Form>
-                        <FieldArray name="owners">
-                            {({ push, remove }) => (
+                        <FieldArray name="owners"
+                            render={({ push, remove }) => (
                                 <div>
                                     {values.owners.map((o, index) => {
                                         return (
@@ -40,12 +44,13 @@ const OwnerHistoryCopy = () => {
                                                     <Grid item xs={12}>
                                                         <TextField
                                                             fullWidth
-                                                            // key={index}
                                                             label="Previous Owner Name"
                                                             name={`owners.${index}.previousOwnerName`}
-                                                            // component={TextField}
-                                                            value={userData["previousOwnerName"]}
-                                                            onChange={(event) => setUserData({ ...userData, "previousOwnerName": event.target.value })}
+                                                            // name="previousOwnerName"
+                                                            value={userData.previousOwnerName}
+                                                            // onChange={(event) => setUserData({ ...userData, previousOwnerName: event.target.value })}
+                                                            onChange={(event)=>onChangeHandler(event,index)}
+                                                            // onChange={handleChange}
                                                         />
                                                     </Grid>
                                                     <Grid item xs={12}>
@@ -53,9 +58,8 @@ const OwnerHistoryCopy = () => {
                                                             fullWidth
                                                             label="Contact Infomation"
                                                             name={`owners.${index}.previousOwnerContact`}
-                                                            // component={TextField}
-                                                            value={userData["previousOwnerContact"]}
-                                                            onChange={(event) => setUserData({ ...userData, "previousOwnerContact": event.target.value })}
+                                                            value={userData.previousOwnerContact}
+                                                            onChange={(event) => setUserData({ ...userData, previousOwnerContact: event.target.value })}
                                                         />
                                                     </Grid>
                                                     <Grid item xs={12}>
@@ -64,9 +68,8 @@ const OwnerHistoryCopy = () => {
                                                             id="previousOwnerYears"
                                                             label="Years in Possession"
                                                             name={`owners[${index}].previousOwnerYears`}
-                                                            // component={TextField}
-                                                            value={userData["previousOwnerYears"]}
-                                                            onChange={(event) => setUserData({ ...userData, "previousOwnerYears": event.target.value })}
+                                                            value={userData.previousOwnerYears}
+                                                            onChange={(event) => setUserData({ ...userData, previousOwnerYears: event.target.value })}
                                                         />
                                                     </Grid>
                                                     <Grid item xs={12}>
@@ -74,9 +77,8 @@ const OwnerHistoryCopy = () => {
                                                             fullWidth
                                                             label="Mileage When Sold"
                                                             name={`owners[${index}].mileageOwners`}
-                                                            // component={TextField}
-                                                            value={userData["mileageOwners"]}
-                                                            onChange={(event) => setUserData({ ...userData, "mileageOwners": event.target.value })}
+                                                            value={userData.mileageOwners}
+                                                            onChange={(event) => setUserData({ ...userData, mileageOwners: event.target.value })}
                                                         />
                                                     </Grid>
                                                     <Grid item xs={12}>
@@ -84,11 +86,10 @@ const OwnerHistoryCopy = () => {
                                                             fullWidth
                                                             label="Stories or Notes"
                                                             name={`owners[${index}].previousOwnerStory`}
-                                                            // component={TextField}
                                                             multiline
                                                             rows={4}
-                                                            value={userData["previousOwnerStory"]}
-                                                            onChange={(event) => setUserData({ ...userData, "previousOwnerStory": event.target.value })}
+                                                            value={userData.previousOwnerStory}
+                                                            onChange={(event) => setUserData({ ...userData, previousOwnerStory: event.target.value })}
                                                         />
                                                     </Grid>
                                                 </Grid>
@@ -120,7 +121,7 @@ const OwnerHistoryCopy = () => {
                                     </Button>
                                 </div>
                             )}
-                        </FieldArray>
+                        />
 
                         <pre style={{ textAlign: "left" }}>
                             <strong>Values</strong>

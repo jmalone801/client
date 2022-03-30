@@ -7,8 +7,8 @@ import MuiAccordionDetails from '@mui/material/AccordionDetails';
 import Typography from '@mui/material/Typography';
 import { Paper } from '@mui/material';
 import OwnerHistoryCopy from './OwnerHistoryCopy'
-// import AccidentHistory from './AccidentHistory'
-// import RepairHistory from './RepairHistory'
+import AccidentHistory from './AccidentHistory'
+import RepairHistory from './RepairHistory'
 // import ShowingsHistory from './ShowingsHistory'
 
 
@@ -83,7 +83,7 @@ const MainHistory = () => {
                     </AccordionSummary>
                     <AccordionDetails >
                         {/* *****Import***** */}
-                        {/* <AccidentHistory /> */}
+                        <AccidentHistory />
                     </AccordionDetails>
                 </Accordion>
                 <Accordion expanded={expanded === 'panel3'} onChange={handleChange('panel3')}>
@@ -92,7 +92,7 @@ const MainHistory = () => {
                     </AccordionSummary>
                     <AccordionDetails>
                         {/* *****Import***** */}
-                        {/* <RepairHistory /> */}
+                        <RepairHistory />
                     </AccordionDetails>
                 </Accordion>
                 <Accordion expanded={expanded === 'panel4'} onChange={handleChange('panel4')}>

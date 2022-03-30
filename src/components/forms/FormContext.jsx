@@ -19,6 +19,15 @@ const initialInfoState = {
     // previousOwnerYears: "",
     // mileageOwners: "",
     // previousOwnerStory: "",
+    "owners":[
+        {
+            previousOwnerName: "",
+            previousOwnerContact: "",
+            previousOwnerYears: "",
+            mileageOwners: "",
+            previousOwnerStory: "",
+        }
+    ]
 };
 
 export const multiStepContext = createContext();
